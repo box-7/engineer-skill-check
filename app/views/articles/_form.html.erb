@@ -1,0 +1,75 @@
+<%# <h1>Articles#new</h1>
+<p>Find me in app/views/articles/new.html.erb</p> %>
+
+<div class="employee_form">
+
+  <% if article.errors.present? %>
+    <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: article, local: true do |f| %>
+    <div class="form_group">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </div>
+
+    <%= f.submit '保存' %>
+  <% end %>
+</div>
+
+
+
+<%
+=begin %>
+
+<div class="form_group">
+      <%= f.label :account %>
+      <%= f.text_field :account %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :date_of_joining %>
+      <%= f.date_field :date_of_joining %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :department_id %>
+      <%= f.collection_select(:department_id, @departments, :id, :name)%>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :office_id %>
+      <%= f.collection_select(:office_id, @offices, :id, :name)%>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :employee_info_manage_auth, class: 'checkbox_label' %>
+      <%= f.check_box :employee_info_manage_auth, :as => :boolean %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :news_posts_auth, class: 'checkbox_label' %>
+      <%= f.check_box :news_posts_auth, :as => :boolean %>
+    </div>
+
+<%
+=end %>
