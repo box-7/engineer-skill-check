@@ -36,3 +36,6 @@ ja:
         news_posts_auth: お知らせ投稿権限
       profile:
         profile: プロフィール
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

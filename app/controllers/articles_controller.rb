@@ -1,5 +1,14 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: %i(edit update destroy)
+
   def index
+    if params[:latest]
+      @articles = Article.active.latest
+    elsif params[:old]
+      @articles = Article.active.old
+    else
+      @articles = Article.active.all
+    end
   end
 
   def new
@@ -21,7 +30,25 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def edit
+  end
 
+  def update
+    if @article.update(article_params)
+      redirect_to articles_url, notice: "「#{@article.title}」を更新しました。"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    ActiveRecord::Base.transaction do
+      now = Time.now
+      @article.update_column(:deleted_at, now)
+    end
+
+    redirect_to articles_url, notice: "「#{@article.title}」を削除しました。"
+  end
 
   private
 
@@ -29,5 +56,8 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :content)
   end
 
+  def set_article
+    @article = Article.find(params["id"])
+  end
 
 end
