@@ -107,3 +107,6 @@ tr {
   border: 0;
 }
 
+.linefeed{
+  word-wrap: break-word;
+}

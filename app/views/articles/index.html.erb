@@ -10,26 +10,26 @@
   <table class="employee_table">
     <thead>
       <tr>
-        <th class="name">タイトル</th>
+        <th>タイトル</th>
         <th class="name">公開日  
           <%= link_to '▼', articles_path(latest: "true") %>
           <%= link_to '▲', articles_path(old: "true") %>
         </th>
-        <th class="name"></th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
     <% @articles.each do |article| %>
       <tr class="employee">
-        <td class="text-truncate"><%= link_to article.title, article_path(article), class: 'text-truncate text-end'  %></td>
-        <td><%= article.created_at %></td>
-        <td>
+        <th class="text-truncate linefeed"><%= link_to article.title, article_path(article), class: 'text-truncate text-end'  %></th>
+        <th class="name"><%= article.created_at %></td>
+        <th>
           <% if current_user.id == article.author %>
             <span class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn' %></span>
             <span class="btn_th"><%= link_to '削除', article, method: :delete, data: { confirm: "「#{article.title}」を削除します。よろしいですか？" }, class: 'btn' %></span>
           <% end %>
-        </td>
+        </th>
       </tr>
     <% end %>
     </tbody>
