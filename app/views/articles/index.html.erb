@@ -16,6 +16,8 @@
             <%= link_to '公開日', articles_path(old: "true") %>
           <% elsif params[:old] %>
             <%= link_to '公開日', articles_path(latest: "true") %>
+          <% else %>
+            <%= link_to '公開日', articles_path(old: "true") %>
           <% end %>
         </th>
         <th></th>
