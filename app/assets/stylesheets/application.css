@@ -110,3 +110,7 @@ tr {
 .linefeed{
   word-wrap: break-word;
 }
+
+.article_input {
+  width: 600px !important;
+}
