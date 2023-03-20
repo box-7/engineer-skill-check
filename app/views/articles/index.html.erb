@@ -1,0 +1,37 @@
+<div class="employee_index">
+  <% if flash.notice.present? %>
+    <p><%= flash.notice %></p>
+  <% end %>
+
+  <% if current_user.news_posts_auth %>
+    <p class="new_employee"><%= link_to '新規追加', new_article_path, class: 'btn' %></p>
+  <% end %>
+
+  <table class="employee_table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th class="name">公開日  
+          <%= link_to '▼', articles_path(latest: "true") %>
+          <%= link_to '▲', articles_path(old: "true") %>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @articles.each do |article| %>
+      <tr class="employee">
+        <th class="text-truncate linefeed"><%= link_to article.title, article_path(article), class: 'text-truncate text-end'  %></th>
+        <th class="name"><%= article.created_at %></td>
+        <th>
+          <% if current_user.id == article.author %>
+            <span class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn' %></span>
+            <span class="btn_th"><%= link_to '削除', article, method: :delete, data: { confirm: "「#{article.title}」を削除します。よろしいですか？" }, class: 'btn' %></span>
+          <% end %>
+        </th>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
