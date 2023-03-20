@@ -11,9 +11,14 @@
     <thead>
       <tr>
         <th>タイトル</th>
-        <th class="name">公開日  
-          <%= link_to '▼', articles_path(latest: "true") %>
-          <%= link_to '▲', articles_path(old: "true") %>
+        <th class="name">
+          <% if params[:latest] %>
+            <%= link_to '公開日', articles_path(old: "true") %>
+          <% elsif params[:old] %>
+            <%= link_to '公開日', articles_path(latest: "true") %>
+          <% else %>
+            <%= link_to '公開日', articles_path(old: "true") %>
+          <% end %>
         </th>
         <th></th>
       </tr>

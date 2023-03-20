@@ -29,6 +29,7 @@ ja:
         account: アカウント
         password: パスワード
         e_mail: メールアドレス
+        email: メールアドレス
         date_of_joining: 入社年月日
         department_id: 部署
         office_id: オフィス
