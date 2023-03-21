@@ -3,7 +3,16 @@ class EmployeesController < ApplicationController
   before_action :set_form_option, only: %i(new create edit update)
 
   def index
-    @employees = Employee.active.order("#{sort_column} #{sort_direction}")
+    if sort_column == "number"
+      if sort_direction == 'asc'
+        @employees = Employee.active.sort
+      else
+        @employees = Employee.active.sort.reverse
+      end
+    else
+      @employees = Employee.active.order("#{sort_column} #{sort_direction}")
+    end
+    @employees = Kaminari.paginate_array(@employees).page(params[:page]).per(10)
   end
 
   def new
