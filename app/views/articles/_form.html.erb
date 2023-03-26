@@ -1,0 +1,25 @@
+<div class="employee_form">
+
+  <% if article.errors.present? %>
+    <ul>
+      <% article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: article, local: true do |f| %>
+    <div class="form_group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "article_input" %>
+    </div>
+
+    <div class="form_group">
+      <%= f.label :content %>
+      <%= f.text_area :content, :size=>"60x15", class: "article_input" %>
+    </div>
+
+    <div><%= f.submit '保存', class:"btn btn-primary" %></div>
+
+  <% end %>
+</div>

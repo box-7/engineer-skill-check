@@ -29,9 +29,24 @@ ja:
         account: アカウント
         password: パスワード
         e_mail: メールアドレス
+        email: メールアドレス
         date_of_joining: 入社年月日
         department_id: 部署
         office_id: オフィス
         employee_info_manage_auth: 社員情報管理権限
+        news_posts_auth: お知らせ投稿権限
       profile:
         profile: プロフィール
+      article:
+        title: タイトル
+        content: 内容
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
