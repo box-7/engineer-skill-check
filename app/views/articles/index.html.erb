@@ -4,20 +4,20 @@
   <% end %>
 
   <% if current_user.news_posts_auth %>
-    <p class="new_employee"><%= link_to '新規追加', new_article_path, class: 'btn' %></p>
+    <p class="new_employee"><%= link_to '新規追加', new_article_path, class: 'btn btn-primary mt-2' %></p>
   <% end %>
 
-  <table class="employee_table">
+  <table align="center" class="employee_table ">
     <thead>
       <tr>
-        <th>タイトル</th>
+        <th class="ps-2">タイトル</th>
         <th class="name">
           <% if params[:latest] %>
-            <%= link_to '公開日', articles_path(old: "true") %>
+            <%= link_to '公開日', articles_path(old: "true"), class:"userList" %>
           <% elsif params[:old] %>
-            <%= link_to '公開日', articles_path(latest: "true") %>
+            <%= link_to '公開日', articles_path(latest: "true"), class:"userList" %>
           <% else %>
-            <%= link_to '公開日', articles_path(old: "true") %>
+            <%= link_to '公開日', articles_path(old: "true"), class:"userList" %>
           <% end %>
         </th>
         <th></th>
@@ -27,12 +27,12 @@
     <tbody>
     <% @articles.each do |article| %>
       <tr class="employee">
-        <th class="text-truncate linefeed"><%= link_to article.title, article_path(article), class: 'text-truncate text-end'  %></th>
-        <th class="name"><%= article.created_at %></td>
-        <th>
+        <th class="text-truncate linefeed ps-2"><%= link_to article.title, article_path(article) %></th>
+        <th class="name"><%= article.created_at.to_s.slice(0, 20) %></td>
+        <th class="ps-2">
           <% if current_user.id == article.author %>
-            <span class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn' %></span>
-            <span class="btn_th"><%= link_to '削除', article, method: :delete, data: { confirm: "「#{article.title}」を削除します。よろしいですか？" }, class: 'btn' %></span>
+            <span class="btn_th"><%= link_to '編集', edit_article_path(article), class: 'btn btn-primary' %></span>
+            <span class="btn_th"><%= link_to '削除', article, method: :delete, data: { confirm: "「#{article.title}」を削除します。よろしいですか？" }, class: 'btn btn-danger' %></span>
           <% end %>
         </th>
       </tr>

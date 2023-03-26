@@ -16,9 +16,10 @@
 
     <div class="form_group">
       <%= f.label :content %>
-      <%= f.text_area :content, :size=>"60x20", class: "article_input" %>
+      <%= f.text_area :content, :size=>"60x15", class: "article_input" %>
     </div>
 
-    <%= f.submit '保存' %>
+    <div><%= f.submit '保存', class:"btn btn-primary" %></div>
+
   <% end %>
 </div>
